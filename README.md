@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor solution](https://www.frontendmentor.io/solutions/vanilla-javascript---base-apparel-coming-soon-page-U5ZRDPhjLd)
+- Live Site URL: [base-apparel-coming-soon-page-xi-ruddy.vercel.app](https://base-apparel-coming-soon-page-xi-ruddy.vercel.app/)
 
 ## My process
 
