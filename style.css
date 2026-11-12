@@ -1,0 +1,171 @@
+/* Design tokens */
+:root {
+  --pink-400: hsl(0, 36%, 70%);
+  --red-500: hsl(0, 93%, 68%);
+  --gray-900: hsl(0, 6%, 24%);
+  --bg-gradient: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  --btn-gradient: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+[hidden] { display: none !important; }
+img { display: block; max-width: 100%; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gray-900);
+  background: var(--bg-gradient);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Layout: mobile = stacked */
+.page {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "hero"
+    "content";
+}
+
+.site-header { grid-area: header; padding: 2rem; }
+.site-header img { width: 6.25rem; height: auto; }
+
+.hero { grid-area: hero; }
+.hero img { width: 100%; height: auto; }
+
+.content {
+  grid-area: content;
+  padding: 4rem 2rem 5.5rem;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gray-900);
+}
+h1 .light {
+  display: block;
+  font-weight: 300;
+  color: var(--pink-400);
+}
+
+.intro {
+  max-width: 28rem;
+  margin: 1rem auto 2rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--pink-400);
+}
+
+/* Form */
+.notify { max-width: 28rem; margin: 0 auto; text-align: left; }
+
+.field { position: relative; }
+
+.field input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 7rem 0 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--pink-400) 50%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--gray-900);
+  outline: none;
+}
+.field input::placeholder { color: color-mix(in srgb, var(--pink-400) 70%, transparent); }
+.field input:focus { border-color: var(--pink-400); }
+
+.submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4rem;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--btn-gradient);
+  box-shadow: 0 15px 20px -5px hsla(0, 74%, 74%, 0.6);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.submit:hover,
+.submit:focus-visible { opacity: 0.6; }
+
+/* Error state: driven by aria-invalid on the input */
+.error-icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 5rem;
+  transform: translateY(-50%);
+}
+.field input[aria-invalid="true"] { border: 2px solid var(--red-500); }
+.field input[aria-invalid="true"] ~ .error-icon { display: block; }
+
+.error-msg,
+.success-msg {
+  margin: 0.5rem 0 0 1.5rem;
+  font-size: 0.8125rem;
+}
+.error-msg { color: var(--red-500); }
+.success-msg { color: var(--gray-900); }
+
+.attribution { padding: 1rem; font-size: 0.6875rem; text-align: center; color: var(--pink-400); }
+.attribution a { color: var(--gray-900); }
+
+/* Desktop */
+@media (min-width: 60em) {
+  body {
+    background: url(./images/bg-pattern-desktop.svg) left top / 57.6% 100% no-repeat, var(--bg-gradient);
+  }
+
+  .page {
+    min-height: 100vh;
+    grid-template-columns: 1fr 42.4%;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "header hero"
+      "content hero";
+  }
+
+  .site-header { padding: 4rem 0 0 11.5vw; }
+  .site-header img { width: 9.875rem; }
+
+  .hero img { height: 100%; object-fit: cover; }
+
+  .content {
+    padding: 8.5rem 4rem 4rem 11.5vw;
+    text-align: left;
+  }
+
+  h1 { font-size: 4rem; line-height: 1.07; }
+
+  .intro { margin: 2rem 0 2.5rem; font-size: 1rem; line-height: 1.75; }
+
+  .notify { margin: 0; }
+  .field input { height: 3.5rem; padding-left: 2rem; font-size: 1rem; }
+  .submit { width: 6.25rem; }
+  .error-icon { right: 7.25rem; }
+  .error-msg, .success-msg { margin-left: 2rem; }
+
+  .attribution { position: absolute; left: 0; bottom: 0; width: 57.6%; }
+}
